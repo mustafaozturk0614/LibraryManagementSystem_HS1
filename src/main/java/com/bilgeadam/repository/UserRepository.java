@@ -47,7 +47,6 @@ public class UserRepository extends Repository<User,Long >{
 //                .where(criteriaBuilder.and(criteriaBuilder.equal(root.get("username"),username),
 //                        criteriaBuilder.equal(root.get("password"),password)
 //                        ));
-
         try {
             user=getEm().createQuery(criteriaQuery).getSingleResult();
         }catch (NoResultException exception){

@@ -2,6 +2,7 @@ package com.bilgeadam;
 
 import com.bilgeadam.controller.UserController;
 import com.bilgeadam.repository.UserRepository;
+import com.bilgeadam.ui.LibraryUi;
 
 /*
 1. User (Kullanıcı)
@@ -56,9 +57,11 @@ public class Main {
         UserRepository userRepository=new UserRepository();
 //        System.out.println( userRepository.findbyUsername("mustafa"));
 //        System.out.println( userRepository.findbyUsername("mustafa"));
-        System.out.println( userRepository.findByUsernameAndPasswordHQL("mustafa","123"));
+    //    System.out.println( userRepository.findByUsernameAndPasswordHQL("mustafa","123"));
 
         UserController userController=new UserController();
+        LibraryUi ui=new LibraryUi();
+        ui.startApp();
       //  System.out.println(userController.register());
 
 

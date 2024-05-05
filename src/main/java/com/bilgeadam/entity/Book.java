@@ -23,6 +23,8 @@ public class Book {
     private EBookType bookType;
     private int pageCount;
     private Long authorId;
-    private EStatus status;
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    private EStatus status=EStatus.AVAILABLE;
 
 }
