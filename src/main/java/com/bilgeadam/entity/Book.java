@@ -20,6 +20,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     private String title;
+    @Enumerated(EnumType.STRING)
     private EBookType bookType;
     private int pageCount;
     private Long authorId;

@@ -1,5 +1,7 @@
 package com.bilgeadam.ui;
 
+import com.bilgeadam.controller.AuthorController;
+import com.bilgeadam.controller.BookController;
 import com.bilgeadam.controller.UserController;
 import com.bilgeadam.entity.User;
 import com.bilgeadam.utility.Response;
@@ -7,10 +9,15 @@ import com.bilgeadam.utility.Response;
 public class LibraryUi {
 
     UserController userController;
+    BookController bookController;
+    AuthorController authorController;
     User currentUser;
 
     public LibraryUi() {
+
         this.userController=new UserController();
+        this.bookController=new BookController();
+        this.authorController=new AuthorController();
     }
 
     public  void mainMenu(){
@@ -39,6 +46,12 @@ public class LibraryUi {
                case 1:
                    break;
                case 2:
+                   break;
+               case 5:
+                   bookController.createBook();
+                   break;
+               case 6:
+                   authorController.createAuthor();
                    break;
                case 7:
                    System.out.println("Üst menuye donuluyor....");

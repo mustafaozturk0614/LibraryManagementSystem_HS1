@@ -14,6 +14,13 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "tbl_author")
+@NamedQueries({
+        @NamedQuery(
+            name = "findAuthorIdByFirstNameAndLastName",
+            query = "select a.id from Author a where a.firstName=:firstName and a.lastName=:lastName"
+        )
+
+})
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

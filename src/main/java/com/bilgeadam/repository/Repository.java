@@ -60,6 +60,7 @@ public class Repository<T,ID> implements ICrud<T,ID> {
     public T save(T entity) {
         openSession();
         em.persist(entity);
+        em.flush();
         closeSession();
         return entity;
     }
@@ -73,6 +74,7 @@ public class Repository<T,ID> implements ICrud<T,ID> {
         }catch (Exception e){
             rollback();
         }
+
         return entities;
     }
 

@@ -34,7 +34,7 @@
 
 
             <property name="hibernate.hbm2ddl.auto"
-                      value="update" />
+                      value="create" />
             <!--create,update,create-drop -->
 
             <property name="hibernate.show_sql" value="true" />

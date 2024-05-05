@@ -16,13 +16,22 @@ public class BookController {
 
 
     public Response<Book> createBook(){
-        String title= Utility.stringDegerAlma("lütfen bir kitap ismi giriniz");
-        EBookType bookType= bookService.getBookType();
-        int pageCount= Utility.intDegerAlma("Lütfen sayfa sayısı giriniz");
-        String firstName= Utility.stringDegerAlma("Lütfen yazar adı giriniz");
-        String lastName= Utility.stringDegerAlma("Lütfen yazar soyadı giriniz");
-        Long authorId=bookService.getAuthorId(firstName,lastName);
-        Book book=Book.builder().title(title).pageCount(pageCount).bookType(bookType).authorId(authorId).build();
-        return  null;
+        Response<Book> response=new Response<>();
+        try {
+            String title= Utility.stringDegerAlma("lütfen bir kitap ismi giriniz");
+            EBookType bookType= bookService.getBookType();
+            int pageCount= Utility.intDegerAlma("Lütfen sayfa sayısı giriniz");
+            String firstName= Utility.stringDegerAlma("Lütfen yazar adı giriniz");
+            String lastName= Utility.stringDegerAlma("Lütfen yazar soyadı giriniz");
+            Long authorId=bookService.getAuthorId(firstName,lastName);
+            Book book=bookService.save(Book.builder().title(title).pageCount(pageCount).bookType(bookType).authorId(authorId).build());
+            response.setData(book);
+            response.setStatusCode(200);
+            response.setMessage("Kitap başarı ile olusturuldu");
+        }catch (Exception e){
+            response.setStatusCode(400);
+            response.setMessage(e.getMessage()+": Kitap oluşturulamadı!!!!");
+        }
+        return  response;
     }
 }
