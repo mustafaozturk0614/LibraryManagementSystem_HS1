@@ -15,7 +15,7 @@
         <class>com.bilgeadam.entity.Author</class>
         <class>com.bilgeadam.entity.UserInformation</class>
         <class>com.bilgeadam.entity.Book</class>
-        <class>com.bilgeadam.entity.Barrow</class>
+        <class>com.bilgeadam.entity.Borrow</class>
         <class>com.bilgeadam.entity.Address</class>
 
 

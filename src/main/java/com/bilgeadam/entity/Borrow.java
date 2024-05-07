@@ -14,12 +14,12 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "tbl_barrow")
-public class Barrow {
+public class Borrow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private LocalDate barrowDate;
+    @Builder.Default
+    private LocalDate borrowDate=LocalDate.now();
     private LocalDate returnDate;
     private Long userId;
     private Long bookId;

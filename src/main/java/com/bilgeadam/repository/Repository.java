@@ -1,5 +1,6 @@
 package com.bilgeadam.repository;
 
+import com.bilgeadam.utility.EntityManagerFactoryUtility;
 import com.bilgeadam.utility.ICrud;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -19,14 +20,15 @@ import java.util.Optional;
 @Getter
 public class Repository<T,ID> implements ICrud<T,ID> {
 
-    private final EntityManagerFactory emf;
+
     private EntityManager em;
     private T t;
     //  T result;
 
     public Repository(T entity) {
-        emf = Persistence.createEntityManagerFactory("lbms");
-        em = emf.createEntityManager();
+
+
+        em = EntityManagerFactoryUtility.getEntityManagerFactory().createEntityManager();
         this.t = entity;
     }
 
@@ -36,7 +38,10 @@ public class Repository<T,ID> implements ICrud<T,ID> {
 
     // --------------------****************------------------------------------------------------
     private void openSession(){
-        em = emf.createEntityManager();
+        if(!em.isOpen()){
+            em = EntityManagerFactoryUtility.getEntityManagerFactory().createEntityManager();
+        }
+
         em.getTransaction().begin();
     }
 
@@ -54,13 +59,20 @@ public class Repository<T,ID> implements ICrud<T,ID> {
 
     private void openSS(){
         if(!em.isOpen())
-            em = emf.createEntityManager();
+            em = EntityManagerFactoryUtility.getEntityManagerFactory().createEntityManager();
     }
     @Override
     public T save(T entity) {
         openSession();
         em.persist(entity);
-        em.flush();
+        closeSession();
+        return entity;
+    }
+
+    public T update(T entity) {
+        openSession();
+        em.merge(entity);
+
         closeSession();
         return entity;
     }
@@ -71,6 +83,7 @@ public class Repository<T,ID> implements ICrud<T,ID> {
         try{
             openSession();
             entities.forEach(em::persist);
+           closeSession();
         }catch (Exception e){
             rollback();
         }

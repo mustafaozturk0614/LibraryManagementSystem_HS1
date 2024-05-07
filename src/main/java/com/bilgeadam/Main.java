@@ -57,18 +57,18 @@ temsil eder.
 public class Main {
     public static void main(String[] args) {
 
-        UserRepository userRepository=new UserRepository();
+   //     UserRepository userRepository=new UserRepository();
     //    userRepository.save(User.builder().username("mustafa").password("123").build());
-        AuthorRepository authorRepository=new AuthorRepository();
+   //     AuthorRepository authorRepository=new AuthorRepository();
       //  System.out.println( authorRepository.findAuthorIdByFirstNameAndLastName("KEMAL","TAHİR"));  ;
 //        System.out.println( userRepository.findbyUsername("mustafa"));
 //        System.out.println( userRepository.findbyUsername("mustafa"));
     //    System.out.println( userRepository.findByUsernameAndPasswordHQL("mustafa","123"));
 
-        UserController userController=new UserController();
+  //      UserController userController=new UserController();
         LibraryUi ui=new LibraryUi();
-        CreateData createData=new CreateData();
-        createData.initilazeData();
+  //      CreateData createData=new CreateData();
+     //   createData.initilazeData();
         ui.startApp();
       //  System.out.println(userController.register());
 

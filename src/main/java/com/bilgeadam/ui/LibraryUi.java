@@ -4,6 +4,7 @@ import com.bilgeadam.controller.AuthorController;
 import com.bilgeadam.controller.BookController;
 import com.bilgeadam.controller.UserController;
 import com.bilgeadam.entity.User;
+import com.bilgeadam.utility.CreateData;
 import com.bilgeadam.utility.Response;
 
 public class LibraryUi {
@@ -14,13 +15,15 @@ public class LibraryUi {
     User currentUser;
 
     public LibraryUi() {
-
+        CreateData createData=new CreateData();
+        createData.initilazeData();
         this.userController=new UserController();
         this.bookController=new BookController();
         this.authorController=new AuthorController();
     }
 
     public  void mainMenu(){
+
         System.out.println("====KÜTÜPHANE YÖNETİM SİSTEMİ");
         System.out.println("1-Kayıt ol");
         System.out.println("2-Giriş yap");
